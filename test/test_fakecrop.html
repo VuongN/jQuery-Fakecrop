@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<title>Fakecrop Tests</title>
+		<link rel="stylesheet" href="./qunit/qunit.css" type="text/css" media="screen" />
+	</head>
+    <body>
+        <h1 id="qunit-header">Fakecrop Tests</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+        <div id="qunit-fixture">
+        	<style type="text/css">
+        		.scaleHeight { width:150px;height:600px; }
+				.scaleWidth { width:1000px;height:250px; }
+				.squareItem { width:600px;height:600px; }
+        	</style>
+	        <div id="fill">
+				<a href="#"><div class="scaleHeight"></div></a>
+				<a href="#"><div class="scaleWidth"></div></a>
+				<a href="#"><div class="squareItem"></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+			</div>
+	        <div id="fit">
+				<a href="#"><div class="scaleHeight"></div></a>
+				<a href="#"><div class="scaleWidth"></div></a>
+				<a href="#"><div class="squareItem"></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+				<a href="#"><div></div></a>
+			</div>
+        </div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="../jquery-1.5.2.min.js">\x3C/script>')</script>
+		<script src="./qunit/qunit.js"></script>
+		<script src="../fakecrop/jquery.fakecrop.js"></script>
+		<script>
+			$(document).ready(function () {
+				module("Basic Tests");
+				test("Requirements", function () {
+					expect(3);
+					ok(jQuery, "jQuery exists");
+					ok($, "$ exists");
+					ok($.fn.data, '$.fn.data exists')
+				});
+				
+				module("Fakecrop jQuery Plugin Tests", {
+					setup : function () {
+						$('#qunit-fixture').delegate('#fill a div', 'fakecropcomplete', function () {
+							$(this).addClass('fakecropcomplete');
+						});
+						this.items = $('#fill a div').fakecrop({
+							'wrapperWidth' : 200,
+							'wrapperHeight' : 200,
+							'initClass' : 'fc-is-init',
+							'doneEvent' : 'fakecropcomplete'
+						});
+						this.item = $('#fill a div:first');
+						this.settings = this.item.data('fc.settings');
+					}
+				});
+				test("Initialization", function () {
+					expect(6);
+					
+					ok($.fn.fakecrop, "$.fn.fakecrop exists");
+					ok(this.items.css('color', 'red'), "Maintained chainability");
+					ok(this.item.data('fc.settings'), "item.data('fc.settings') exists");
+					equals(this.settings.wrapperWidth, 200, "Custom settings accepted");
+					ok(this.item.hasClass('fc-is-init'), "Added init class to container");
+					ok(this.item.hasClass('fakecropcomplete'), "fakecropcomplete event triggered");
+
+				});
+				
+				test("Private Methods", function () {
+					expect(6)
+					var args = {item: this.item, 
+								settings: this.settings };
+						args.wrapper = args.settings.wrapperSelector ? args.item.closest(args.settings.wrapperSelector) : args.item.parent()
+					
+					ok(this.item.fakecrop('init', args), 'methods.init');
+					
+					ok(this.item.fakecrop('ratio', args), 'methods.ratio');
+					//deepEqual(this.item.fakecrop('ratio', args), {w: 0.5, h: 3}, 'methods.ratio(args)')
+					
+					ok(this.item.fakecrop('center', 100, 50), 'methods.center');
+					equals(this.item.fakecrop('center', 100, 50), 25, 'methods.center(100, 50)');
+					
+					ok(this.item.fakecrop('scaleToFit', args), 'methods.scaleToFit');
+					ok(this.item.fakecrop('scaleToFill', args), 'methods.scaleToFill');
+				})
+				
+			})
+		</script>	
+    </body>
+</html>
+</html>
