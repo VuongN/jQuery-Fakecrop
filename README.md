@@ -2,10 +2,6 @@
 
 **Usage:**
 
-<style>
-	img { height:100px; } /** there has to be a fixed dimension width/height **/
-</style>
-
 <script src="/path/to/jquery-library.js"></script>
 <script src="/path/to/fakecrop.js"></script>
 <script>
