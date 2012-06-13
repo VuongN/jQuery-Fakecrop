@@ -1,6 +1,6 @@
 **jQuery-Fakecrop Plugin** allows you to achieve the fake cropping effect of images.
 
-**Usage:**
+**Quick Start:**
 
 	<script src="/path/to/jquery-library.js"></script>
 	<script src="/path/to/fakecrop.js"></script>
