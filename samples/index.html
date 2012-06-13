@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<title>Fake Crop</title>
+	<title>jQuery-Fakecrop Sample</title>
 	<style type="text/css">
 		.wrapper { width:960px;margin:0 auto; }
 		.container { width:800px;maring:0 auto; }
-		a { padding:0 5px 5px 5p; text-decoration:none;display:inline-block;}
-		a img { border:0;height:100px; }
+		a { padding:0 5px 5px 5p;text-decoration:none;display:inline-block;border:1px solid #EEE; }
+		img { border:0;height:100px; }
 	</style>
 </head>
 <body>
 	<div class="wrapper">
-		<h1>Fakecrop Sample</h1>
+		<h1>jQuery-Fakecrop Sample</h1>
+		<h2>Usage</h2>
+		<div class="container">
+			<pre>&lt;style&gt;
+	img { height:100px; } /** there has to be a fixed dimension width/height **/
+&lt;/style&gt;
+
+&lt;script src="/path/to/jquery-library.js"&gt;&lt;/script&gt;
+&lt;script src="/path/to/fakecrop.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+	$(document).ready(function () {
+		// for a filled square thumbnail
+		$('img').fakecrop();
+		// for a fixed width/height
+		$('img').fakecrop({fill: false});
+	});
+&lt;/script&gt;
+			</pre>
+		</div>
 		<h2>Normal</h2>
 		<div id="normal" class="container">
 			<a href="img/1.jpg"><img src="img/1.jpg" alt="Image 1" /></a>
@@ -25,7 +43,7 @@
 			<a href="img/9.jpg"><img src="img/9.jpg" alt="Image 9" /></a>
 		</div>
 		<h2>With Fakecrop (default)</h2>
-		<pre>$('#fakecrop-fill a img').fakecrop();</pre>
+		<pre>$('#fakecrop-fill img').fakecrop();</pre>
 		<div id="fakecrop-fill" class="container">
 			<a href="img/1.jpg"><img src="img/1.jpg" alt="Image 1" /></a>
 			<a href="img/2.jpg"><img src="img/2.jpg" alt="Image 2" /></a>
@@ -38,7 +56,7 @@
 			<a href="img/9.jpg"><img src="img/9.jpg" alt="Image 9" /></a>
 		</div>
 		<h2>With Fakecrop {fill : false}</h2>
-		<pre>$('#fakecrop a img').fakecrop({ fill: false });</pre>
+		<pre>$('#fakecrop img').fakecrop({ fill: false });</pre>
 		<div id="fakecrop" class="container">
 			<a href="img/1.jpg"><img src="img/1.jpg" alt="Image 1" /></a>
 			<a href="img/2.jpg"><img src="img/2.jpg" alt="Image 2" /></a>
@@ -51,13 +69,13 @@
 			<a href="img/9.jpg"><img src="img/9.jpg" alt="Image 9" /></a>
 		</div>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="../jquery-1.5.2.min.js">\x3C/script>')</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="../jquery-1.7.2.min.js">\x3C/script>')</script>
 	<script src="../fakecrop/jquery.fakecrop.js"></script>
 	<script>
 		$(document).ready(function () {
-			$('#fakecrop-fill a img').fakecrop();
-			$('#fakecrop a img').fakecrop({ fill : false });
+			$('#fakecrop-fill img').fakecrop();
+			$('#fakecrop img').fakecrop({ fill : false });
 		});
 	</script>	
 </body>
