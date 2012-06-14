@@ -1,7 +1,7 @@
 /***
- * jQuery.fakecrop.js
- * 05/18/2011
- * vnguyen 
+ * jquery.fakecrop.js
+ * Copyright (c) 2012 Vuong Nguyen
+ * http://vuongnguyen.com 
  */
 (function ($) {
 	var methods = {
