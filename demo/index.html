@@ -5,7 +5,7 @@
 	<style type="text/css">
 		.wrapper { width:960px;margin:0 auto; }
 		.container { width:800px;maring:0 auto; }
-		a { padding:0 5px 5px 5p;text-decoration:none;display:inline-block;border:1px solid #EEE; }
+		.container a { padding:0 5px 5px 5p;margin:0 10px 10px 0;text-decoration:none;display:inline-block;border:1px solid #DDD;border-radius:3px; }
 		img { border:0;height:100px; }
 	</style>
 </head>
@@ -32,42 +32,31 @@
 		</div>
 		<h2>Normal</h2>
 		<div id="normal" class="container">
-			<a href="img/1.jpg"><img src="img/1.jpg" alt="Image 1" /></a>
-			<a href="img/2.jpg"><img src="img/2.jpg" alt="Image 2" /></a>
-			<a href="img/3.jpg"><img src="img/3.jpg" alt="Image 3" /></a>
-			<a href="img/4.jpg"><img src="img/4.jpg" alt="Image 4" /></a>
-			<a href="img/5.jpg"><img src="img/5.jpg" alt="Image 5" /></a>
-			<a href="img/6.jpg"><img src="img/6.jpg" alt="Image 6" /></a>
-			<a href="img/7.jpg"><img src="img/7.jpg" alt="Image 7" /></a>
-			<a href="img/8.jpg"><img src="img/8.jpg" alt="Image 8" /></a>
-			<a href="img/9.jpg"><img src="img/9.jpg" alt="Image 9" /></a>
+			<script>
+				// This function just write 10 images to the document where ever executed
+				// since we don't want to repeat ourselves
+				function makeImages(amount) {
+					var i = 1, src = '';
+					for (var i=1;i<amount+1;i++) {
+						src = 'img/' + i + '.jpg';
+						document.write('<a href="' + src + '"><img src="' + src + '" alt="Image ' + i + '" /></a>' );
+					}	
+				}
+				makeImages(10);
+			</script>
 		</div>
 		<h2>With Fakecrop (default)</h2>
 		<pre>$('#fakecrop-fill img').fakecrop();</pre>
 		<div id="fakecrop-fill" class="container">
-			<a href="img/1.jpg"><img src="img/1.jpg" alt="Image 1" /></a>
-			<a href="img/2.jpg"><img src="img/2.jpg" alt="Image 2" /></a>
-			<a href="img/3.jpg"><img src="img/3.jpg" alt="Image 3" /></a>
-			<a href="img/4.jpg"><img src="img/4.jpg" alt="Image 4" /></a>
-			<a href="img/5.jpg"><img src="img/5.jpg" alt="Image 5" /></a>
-			<a href="img/6.jpg"><img src="img/6.jpg" alt="Image 6" /></a>
-			<a href="img/7.jpg"><img src="img/7.jpg" alt="Image 7" /></a>
-			<a href="img/8.jpg"><img src="img/8.jpg" alt="Image 8" /></a>
-			<a href="img/9.jpg"><img src="img/9.jpg" alt="Image 9" /></a>
+			<script>makeImages(10);</script>
 		</div>
 		<h2>With Fakecrop {fill : false}</h2>
 		<pre>$('#fakecrop img').fakecrop({ fill: false });</pre>
 		<div id="fakecrop" class="container">
-			<a href="img/1.jpg"><img src="img/1.jpg" alt="Image 1" /></a>
-			<a href="img/2.jpg"><img src="img/2.jpg" alt="Image 2" /></a>
-			<a href="img/3.jpg"><img src="img/3.jpg" alt="Image 3" /></a>
-			<a href="img/4.jpg"><img src="img/4.jpg" alt="Image 4" /></a>
-			<a href="img/5.jpg"><img src="img/5.jpg" alt="Image 5" /></a>
-			<a href="img/6.jpg"><img src="img/6.jpg" alt="Image 6" /></a>
-			<a href="img/7.jpg"><img src="img/7.jpg" alt="Image 7" /></a>
-			<a href="img/8.jpg"><img src="img/8.jpg" alt="Image 8" /></a>
-			<a href="img/9.jpg"><img src="img/9.jpg" alt="Image 9" /></a>
+			<script>makeImages(10);</script>
 		</div>
+		
+		<p>Public domain photographs courtesy of <a href="http://www.ars.usda.gov/is/graphics/photos/" title="United State Department of Agriculture">United State Department of Agriculture</a></p>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="../jquery-1.7.2.min.js">\x3C/script>')</script>
