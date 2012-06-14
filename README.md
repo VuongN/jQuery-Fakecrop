@@ -1,4 +1,6 @@
-**jQuery-Fakecrop Plugin** allows you to achieve the fake cropping effect of images.
+**jQuery-Fakecrop Plugin** takes a collection of images and automatically scale them to fit a custom-defined bounding box. This creates a "fake" cropping effect on those images; which produces convincing thumbnails.
+
+For more information, please visit: http://vuongnguyen.com/fake-cropping-images-with-jquery.html
 
 **Quick Start:**
 
