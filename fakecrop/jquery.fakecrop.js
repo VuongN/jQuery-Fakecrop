@@ -11,8 +11,8 @@
 			return { w : item.width()/settings.wrapperWidth, 
 					h : item.height()/settings.wrapperHeight };
 		},
-		center : function (long, short) {
-			return parseInt((long-short)/2, 10);
+		center : function (longVal, shortVal) {
+			return parseInt((longVal-shortVal)/2, 10);
 		},
 		scaleToFill : function (args) {
 			var item = args.item,
